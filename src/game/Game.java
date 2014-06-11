@@ -314,7 +314,7 @@ public class Game implements Drawable {
 			Object[] auto = 		{WeaponList.AutoTurret, .15};
 			Object[] grenade = 		{WeaponList.GrenadeLauncher, .15};
 			Object[] shuriken =     {WeaponList.ShurikenLauncher, 0.0};
-//			Object[] richard = 		{WeaponList.RichardWeapon, 0.0};
+			Object[] richard = 		{WeaponList.RichardWeapon, 0.0};
 			
 			randWeap.add(shotgun);
 			randWeap.add(machinegun);
@@ -322,7 +322,7 @@ public class Game implements Drawable {
 			randWeap.add(auto);
 			randWeap.add(grenade);
 			randWeap.add(shuriken);
-//			randWeap.add(richard);
+			randWeap.add(richard);
 		}
 		return randWeap;
 	}
