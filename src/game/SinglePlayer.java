@@ -11,11 +11,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import util.Drawable;
 import util.Startable;
 
 public class SinglePlayer implements Startable {
@@ -48,7 +50,22 @@ public class SinglePlayer implements Startable {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
+			AffineTransform old = g2.getTransform();
+			Tank player = game.getPlayerTanks().get(1);
+			if (player != null) {
+				g2.translate(-player.getCenter().getX() + Game.windowSize.getWidth()/2,
+						-player.getCenter().getY() + Game.windowSize.getHeight()/2);
+			} else {
+				g2.setTransform(old);
+			}
 			game.draw(g2);
+			g2.setTransform(old);
+			
+			//Draw the minimap
+			g2.translate(Game.windowSize.getWidth()-256, 0);
+			g2.scale(1.0/5, 1.0/5);
+			game.draw(g2);
+			g2.setTransform(old);
 //			g2.drawString(cp.toString(), 100, 100);
 //			g2.drawString(Integer.toString(frameMS) + "   " + Integer.toString(game.getSize()), 1100,100);
 //			g2.drawString(Double.toString(AI.angleToPoint(game.getTanks().get(0).getCenter(),
@@ -115,7 +132,12 @@ public class SinglePlayer implements Startable {
 		public void actionPerformed(ActionEvent arg0) {
 			long start = System.currentTimeMillis();
 			if (game.isFinished() == false){
-			game.update(down, right, clickpoint, shoot);
+				System.out.println(clickpoint);
+				Tank player = game.getPlayerTanks().get(1);
+				int dx = (int) (-player.getCenter().getX() + Game.windowSize.getWidth()/2);
+				int dy = (int) (-player.getCenter().getY() + Game.windowSize.getHeight()/2);
+				game.update(down, right, new Point((int)clickpoint.getX()-dx,
+						(int)clickpoint.getY()-dy), shoot);
 			} else {
 				game = new Game(frequency);
 			}

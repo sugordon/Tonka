@@ -15,18 +15,17 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import util.Drawable;
 import util.KeyInput;
-import weapon.*;
-import weapon.Weapon.WeaponList;
 
 public class ClientFrame {
 	public static void main(String[] args) {
@@ -39,6 +38,8 @@ public class ClientFrame {
 	private Client client;
 	private HashSet<Drawable> drawables;
 	private TankProxy myTank;
+	private JPanel selectPanel;
+	private Listener li;
 
 	public static final int TIMESTEP = 17;
 
@@ -52,8 +53,12 @@ public class ClientFrame {
 		
 		frame = new JFrame();
 		windowSize = new Dimension(1280, 720);
-		Listener li = new Listener();
+		li = new Listener();
 		frame.addKeyListener(li);
+//		selectPanel = new SelectPanel();
+//		frame.add(selectPanel);
+//		selectPanel.addMouseListener(li);
+//		selectPanel.addMouseMotionListener(li);
 		JPanel mainDraw = new MainDraw();
 		frame.add(mainDraw);
 		mainDraw.addMouseListener(li);
@@ -69,6 +74,7 @@ public class ClientFrame {
 	public class MainDraw extends JPanel {
 		public MainDraw() {
 			this.setPreferredSize(windowSize);
+			this.setVisible(true);
 		}
 		@Override
 		public void paintComponent(Graphics g) {
@@ -104,12 +110,24 @@ public class ClientFrame {
 		public SelectPanel() {
 			this.setPreferredSize(windowSize);
 			this.setVisible(true);
-			ButtonGroup bg = new ButtonGroup();
-			for (WeaponList wl : Weapon.WeaponList.values()) {
-				JRadioButton jrb = new JRadioButton(wl.name());
-				bg.add(jrb);
-				this.add(jrb);
-			}
+			JSpinner jspinner = new JSpinner();
+			jspinner.setVisible(true);
+			jspinner.setValue(1);
+			jspinner.addChangeListener(new ChangeListener() {
+
+				@Override
+				public void stateChanged(ChangeEvent arg0) {
+					JSpinner slider = (JSpinner)arg0.getSource();
+					int value = (int) slider.getValue();
+					if (value <= 0) {
+						value = 1;
+						slider.setValue(1);
+					}
+				}
+				
+			});
+			this.add(new JLabel("Team"));
+			this.add(jspinner);
 		}
 	}
 
@@ -163,6 +181,16 @@ public class ClientFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 //			game.update(down, right, clickpoint);
+//			if (drawables != null && drawables.isEmpty() == false) {
+//				frame.remove(selectPanel);
+//				JPanel mainDraw = new MainDraw();
+//				frame.add(mainDraw);
+//				mainDraw.addMouseListener(li);
+//				mainDraw.addMouseMotionListener(li);
+//				mainDraw.setVisible(true);
+//				mainDraw.requestFocus();
+//				frame.pack();
+//			}
 			drawables = client.getGame();
 			int index = client.getIndex();
 			myTank = null;

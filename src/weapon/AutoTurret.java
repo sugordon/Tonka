@@ -134,6 +134,11 @@ public class AutoTurret extends Weapon {
 	}
 }
 
+/*
+ * Because we override the draw method, we have to create a new proxyclass to draw it
+ * The proxyclass should be immuntable, so make all the data members private.
+ */
+
 class AutoProxy implements Serializable, Drawable {
 	private final double theta;
 	private final double xcenter;

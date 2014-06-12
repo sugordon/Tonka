@@ -38,6 +38,16 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 	private AffineTransform old;
 	private final int MAXAMMO;
 	
+	/*
+	 * STEPS TO ADD A WEAPON:
+	 * 1. Create a weapon, override the methods that you want.
+	 * 2. Add the weapon to the Game's Weapon List, this method is marked with a "*+*"
+	 * 3. Add the weapon to the enumeration list, and return an instance of the weapon.
+	 * 		The method is below.
+	 * 4. If your weapon overrides the draw method, you need to create a new proxy weapon class
+	 * 		see the AutoTurret Class to see an example of this.
+	 */
+	
 	public static enum WeaponList {AutoTurret, BasicTurret, GrenadeLauncher,
 		Machinegun, RichardWeapon, Shotgun, ShurikenLauncher;
 		public static Weapon getWeapon(WeaponList w, Tank t, double atot, double dtot) {
@@ -88,8 +98,15 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 	public void replenishAmmo() {
 		this.setAmmo(MAXAMMO);
 	}
+	/**
+	 * This method is called whenever the weapon recieves an Action.SPREAD call.
+	 * This is generally not used in most of the weapons
+	 */
 	public abstract void updateSpread();
 	
+	/*
+	 * This is the draw Method. Override it to do stuff with it.
+	 */
 	@Override
 	public void draw(Graphics2D g2) {
 		old = g2.getTransform();
@@ -160,7 +177,13 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 		this.setTgtAngle(AngleMath.adjustAngle((int)Math.toDegrees(tgtAng)));
 	}
 
-//	//Returns the projectile that the weapon shoots
+	/**
+	 * This method will be called whenever the tank recieves a click.
+	 * Generally, use the canShoot() method to check if you can shoot before shooting
+	 * Returns an arrayList or projectiles to shoot, it can return a null if it doesnt shoot
+	 * anything. Remember to set the canfire to false, reduce the ammo, and add a fire/ammo timer
+	 * @return An ArrayList of projectiles to shoot
+	 */
 	public abstract ArrayList<Projectile> shoot();
 	
 	//Returns if the weapon can shoot or not
@@ -247,6 +270,13 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 	public void setCanFire(boolean canFire) {
 		this.canFire = canFire;
 	}
+	
+	/**
+	 * The way the timer works is that there are several actions that the timer can call, these are
+	 * parsed in the constructor. AMMO replenishes AMMO, FIRE is a timer that allows it to fire, SPREAD
+	 * calls the update spread method
+	 * @param t
+	 */
 	
 	public void addTimer(Timer t){
 		allTimers.add(t);

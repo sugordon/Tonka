@@ -141,15 +141,17 @@ public class Game implements Drawable {
 				break;
 			}
 		}
+		
 		int pos = 0;
-		while(Math.random() < probability) {
+		if (Math.random() < probability) {
 			num = Math.random();
 			prob = 0.0;
 			for (Object[] o : weaps) {
 				prob += (double)o[1];
 				if (prob > num) {
 					t.addWeapon(WeaponList.getWeapon((WeaponList) o[0], t,
-							0, t.getBoundingBox().height/2-(++pos)*8));
+							0, t.getBoundingBox().height/2-(++pos)*12));
+					break;
 				}
 			}
 		}
@@ -286,6 +288,10 @@ public class Game implements Drawable {
 		return blocks;
 	}
 	
+	public HashMap<Integer, Tank> getPlayerTanks() {
+		return playerTanks;
+	}
+	
 	public HashSet<Drawable> getSend() {
 		HashSet<Drawable> sends = new HashSet<Drawable>();
 		for (Drawable d : drawables){
@@ -303,6 +309,10 @@ public class Game implements Drawable {
 	public int getNumPlayers() {
 		return playerTanks.size();
 	}
+	// *+*
+	/*
+	 * You need to add new weapons here. Remember to fill in the probabilities
+	 */
 	public static ArrayList<Object[]> getRandWeaps() {
 		if (randWeap == null) {
 			//Create the random weapon Stuff
