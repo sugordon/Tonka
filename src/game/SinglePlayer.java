@@ -132,7 +132,6 @@ public class SinglePlayer implements Startable {
 		public void actionPerformed(ActionEvent arg0) {
 			long start = System.currentTimeMillis();
 			if (game.isFinished() == false){
-				System.out.println(clickpoint);
 				Tank player = game.getPlayerTanks().get(1);
 				int dx = (int) (-player.getCenter().getX() + Game.windowSize.getWidth()/2);
 				int dy = (int) (-player.getCenter().getY() + Game.windowSize.getHeight()/2);
