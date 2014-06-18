@@ -49,7 +49,7 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 	 */
 	
 	public static enum WeaponList {AutoTurret, BasicTurret, GrenadeLauncher,
-		Machinegun, RichardWeapon, Shotgun, ShurikenLauncher;
+		Machinegun, RichardWeapon, Shotgun, ShurikenLauncher, Flamethrower;
 		public static Weapon getWeapon(WeaponList w, Tank t, double atot, double dtot) {
 			if (w == AutoTurret) {
 				return new AutoTurret(t, atot, dtot);
@@ -71,6 +71,9 @@ public abstract class Weapon implements Drawable, Updatable, Sendable {
 			}
 			if (w == ShurikenLauncher) {
 				return new ShurikenLauncher(t, atot, dtot);
+			}
+			if (w == Flamethrower) {
+				return new Flamethrower(t, atot, dtot);
 			}
 			return null;
 		}
