@@ -21,7 +21,7 @@ import util.Timer.Action;
 public class BasicTurret extends Weapon {
 	
 	public BasicTurret(Tank t, Point2D center, double atot, double dtot){
-		super(t, 3, center, 5, 17, 2, atot, dtot);
+		super(t, 4, center, 5, 17, 2, atot, dtot);
 		int[] x = { 0,  6, 6, 3,  2, -2, -3, -6, -6};
 		int[] y = {-8, -5, 2, 4, 15, 15,  4,  2, -5};
 		setWeaponShape(new Polygon(x, y, 9));

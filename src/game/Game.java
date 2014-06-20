@@ -63,21 +63,13 @@ public class Game implements Drawable {
 		for (int i = 0;i<playerNum;i++){
 			Tank t = new Tank(100,100 + 50*i, i + 1, this);
 			this.addRandomWeapons(t, frequency);
-//			addRandomWeapon(t, 0, t.getBoundingBox().height/2);
-//			int asdf1 = 0;
-//			while(Math.random()<.03) {
-//				addRandomWeapon(t, 0, t.getBoundingBox().height/2-(++asdf1)*8);
-//			}
+//			t.takeDamage(-1000);
+//			t.addWeapon(new Flamethrower(t, 0, 0));
 			addObject(t);
-			for (int j = 0;j<5;j++){
+			for (int j = 0;j<6;j++){
 				Tank enemy = new Tank(900 + 100*i, 100*j + 100, 0, this);
 				enemy.setColor(new Color(200, 30, 30));
 				this.addRandomWeapons(enemy, frequency);
-//				addRandomWeapon(enemy, 0, enemy.getBoundingBox().height/2);
-//				int asdf2 = 0;
-//				while(Math.random()<.03) {
-//					addRandomWeapon(enemy, 0, enemy.getBoundingBox().height/2-(++asdf2)*8);
-//				}
 				enemy.addAI(new AI(enemy, this));
 				boolean colliding = false;
 				for (Collidable c : collidables){
@@ -150,7 +142,7 @@ public class Game implements Drawable {
 				prob += (double)o[1];
 				if (prob > num) {
 					t.addWeapon(WeaponList.getWeapon((WeaponList) o[0], t,
-							0, t.getBoundingBox().height/2-(++pos)*12));
+							0, t.getBoundingBox().height/2-(pos++)*12));
 					break;
 				}
 			}
@@ -325,7 +317,9 @@ public class Game implements Drawable {
 			Object[] grenade = 		{WeaponList.GrenadeLauncher, .1};
 			Object[] shuriken =     {WeaponList.ShurikenLauncher, 0.1};
 			Object[] richard = 		{WeaponList.RichardWeapon, 0.01};
-			Object[] flamethrower = 		{WeaponList.Flamethrower, 0.1};
+			Object[] flamethrower = {WeaponList.Flamethrower, 0.1};
+			Object[] pulsar = 		{WeaponList.Pulsar, 0.1};
+			Object[] longbow = 		{WeaponList.Longbow, 0.1};
 			
 			randWeap.add(shotgun);
 			randWeap.add(machinegun);
@@ -335,6 +329,8 @@ public class Game implements Drawable {
 			randWeap.add(shuriken);
 			randWeap.add(richard);
 			randWeap.add(flamethrower);
+			randWeap.add(pulsar);
+			randWeap.add(longbow);
 		}
 		return randWeap;
 	}

@@ -30,7 +30,7 @@ public class AutoTurret extends Weapon {
 	
 	public AutoTurret(Tank t, Point2D center, double atot, double dtot) {
 //		super(t, 3, center, 5, 17, 2, atot, dtot);
-		super(t, 3, center, 20, 3, 0, atot, dtot);
+		super(t, 4, center, 20, 3, 0, atot, dtot);
 		int[] x = { 1,  4,  6,  6,  4,  1, 1, -1, -1, -4, -6, -6, -4, -1};
 		int[] y = {-2, -3, -5, -3, -1,  0, 7,  7,  0, -1, -3, -5, -3, -2};
 		setWeaponShape(new Polygon(x, y, 14));

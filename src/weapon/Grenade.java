@@ -27,8 +27,8 @@ public class Grenade extends Projectile {
 		int[] xarr = new int[sides];
 		int[] yarr = new int[sides];
 		for(int i = 0; i < sides; i++){
-			xarr[i] = (int)(this.center.getX() + 2 * Math.cos(Math.PI/(sides/2) * i));
-			yarr[i] = (int)(this.center.getY() + 2 * Math.sin(Math.PI/(sides/2) * i));
+			xarr[i] = (int)(this.center.getX() + 4 * Math.cos(Math.PI/(sides/2) * i));
+			yarr[i] = (int)(this.center.getY() + 4 * Math.sin(Math.PI/(sides/2) * i));
 		}
 		this.setProjectileShape(new Polygon(xarr,yarr,sides));
 		deltax = 6*Math.cos(Math.toRadians(theta));

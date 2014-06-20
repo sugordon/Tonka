@@ -13,7 +13,8 @@ import util.Timer.Action;
 
 public class Flamethrower extends Weapon{
 	public Flamethrower(Tank t, Point2D center, double atot, double dtot){
-		super(t, 2, center, 65, 2, 15, atot, dtot);
+		super(t, 2, center, 60, 2, 30, atot, dtot);
+		//Needs model, currently using that of MachineGun
 		int[] x = {0, 6, 6, 2,  2,  0, 0};
 		int[] y = {-4, -4, 4, 4, 20, 20, 4};
 		setWeaponShape(new Polygon(x, y, 7));

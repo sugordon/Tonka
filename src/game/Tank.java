@@ -112,6 +112,13 @@ public class Tank implements Drawable, Collidable, Updatable, Sendable {
 		tankShape = Transform.transform(tankShape, xvel, yvel,
 				Math.toRadians(tgtTheta-getTheta()), xcenter, ycenter);
 		setTheta(tgtTheta);
+		
+		//rotates weapons along with the tank//
+//		for(int a=0; a<this.getWeapons().size(); a++) {
+//			Weapon w = getWeapons().get(a);
+//			w.setAngle((int) (w.getAngle()+tgtTheta-originalTheta));
+//		}
+		
 		HashSet<Collidable> collisions = game.getCollisions(this);
 		boolean blocked = false;
 		for (Collidable c : collisions){
@@ -125,6 +132,13 @@ public class Tank implements Drawable, Collidable, Updatable, Sendable {
 			ycenter -= yvel;
 			tankShape = Transform.transform(tankShape, -xvel, -yvel, Math.toRadians(originalTheta - getTheta()), xcenter, ycenter);
 			setTheta(originalTheta);
+			
+			//unrotates weapons along with the tank//
+//			for(int a=0; a<this.getWeapons().size(); a++) {
+//				Weapon w = getWeapons().get(a);
+//				w.setAngle((int)(w.getAngle()-tgtTheta+originalTheta));
+//			}
+			
 		}
 		
 		for (Weapon w : myWeapons){

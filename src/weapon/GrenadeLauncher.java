@@ -29,7 +29,7 @@ public class GrenadeLauncher extends Weapon {
 	}
 
 	public GrenadeLauncher(Tank t, double dtot, double atot) {
-		this(t,3,t.getCenter(), 1, 5, 0, dtot, atot);
+		this(t,4,t.getCenter(), 1, 5, 0, dtot, atot);
 	}
 
 	@Override

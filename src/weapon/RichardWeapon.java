@@ -14,7 +14,7 @@ import util.Timer.Action;
 public class RichardWeapon extends Weapon{
 	
 	public RichardWeapon(Tank t, double atot, double dtot){
-		super(t, 5, t.getCenter(), 2, 10, 0, atot, dtot);
+		super(t, 6, t.getCenter(), 2, 10, 0, atot, dtot);
 		int[] x = {0,	6,	6,	3,	2, -2,	-3,	-6,	-6};
 		int[] y = {-3,	-3,	2,	2,	15,	15,	2,	2,	-3};
 		setWeaponShape(new Polygon(x, y, 9));

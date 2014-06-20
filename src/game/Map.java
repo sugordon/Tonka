@@ -138,8 +138,8 @@ public class Map {
 		addBlock(new Block(new Rectangle(220,300,40,100), true, game));
 		addBlock(new Block(new Rectangle(1000,300,40,100), true, game));
 		//X
-		addBlock(new Block(new Rectangle(575,250,50,150), false, game));
-		addBlock(new Block(new Rectangle(525,300,150,50), false, game));
+		addBlock(new Block(new Rectangle(575,250,50,150), true, game));
+		addBlock(new Block(new Rectangle(525,300,150,50), true, game));
 		//snake
 		addBlock(new Block(new Rectangle(140,500,20,60), true, game));
 		
