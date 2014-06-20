@@ -22,6 +22,7 @@ public class Longbow extends Weapon {
 	
 	public Longbow(Tank t, Point2D center, double atot, double dtot){
 		super(t, 7, center, 12, 25, 1, atot, dtot);
+		//needs model, currently using that of BasicTurret
 		int[] x = { 0,  6, 6, 3,  2, -2, -3, -6, -6};
 		int[] y = {-8, -5, 2, 4, 15, 15,  4,  2, -5};
 		setWeaponShape(new Polygon(x, y, 9));

@@ -1,7 +1,6 @@
 package weapon;
 
 import game.Block;
-import game.Explosion;
 import game.Game;
 import game.Tank;
 import game.Transform;
@@ -18,7 +17,7 @@ import java.io.Serializable;
 import util.Collidable;
 import util.Drawable;
 
-public class FlameMissile extends Projectile{
+public class FlameMissile extends Projectile {
 	private int time;
 	private int timerDelay;
 	private int timetolive;

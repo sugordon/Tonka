@@ -317,7 +317,7 @@ public class Game implements Drawable {
 			Object[] grenade = 		{WeaponList.GrenadeLauncher, .1};
 			Object[] shuriken =     {WeaponList.ShurikenLauncher, 0.1};
 			Object[] richard = 		{WeaponList.RichardWeapon, 0.01};
-			Object[] flamethrower = {WeaponList.Flamethrower, 0.1};
+			Object[] flamethrower = {WeaponList.Flamethrower, 0.0};
 			Object[] pulsar = 		{WeaponList.Pulsar, 0.1};
 			Object[] longbow = 		{WeaponList.Longbow, 0.1};
 			
