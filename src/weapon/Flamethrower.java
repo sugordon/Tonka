@@ -48,19 +48,19 @@ public class Flamethrower extends Weapon{
 				this.addTimer(new Timer(250, Action.AMMO));
 			}
 			Random die = new Random();
-			ArrayList<Projectile> missiles = new ArrayList<Projectile>(1);
-			missiles.add(new BasicMissile(this.getCenter(),
-					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(), 1, this, this.getTank().getGame()));
-//			ArrayList<Projectile> missiles = new ArrayList<Projectile>(3);
-//			missiles.add(new FlameMissile(this.getCenter(),
-//					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
-//					1, this, this.getTank().getGame(), 110));
-//			missiles.add(new FlameMissile(this.getCenter(),
-//					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
-//					1, this, this.getTank().getGame(), 70));
-//			missiles.add(new FlameMissile(this.getCenter(),
-//					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
-//					1, this, this.getTank().getGame(), 20));
+//			ArrayList<Projectile> missiles = new ArrayList<Projectile>(1);
+//			missiles.add(new BasicMissile(this.getCenter(),
+//					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(), 1, this, this.getTank().getGame()));
+			ArrayList<Projectile> missiles = new ArrayList<Projectile>(3);
+			missiles.add(new FlameMissile(this.getCenter(),
+					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
+					1, this, this.getTank().getGame(), 110));
+			missiles.add(new FlameMissile(this.getCenter(),
+					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
+					1, this, this.getTank().getGame(), 70));
+			missiles.add(new FlameMissile(this.getCenter(),
+					(die.nextInt(2)*2-1)*die.nextDouble()*this.getSpread() + getAngle(),
+					1, this, this.getTank().getGame(), 20));
 			return missiles;
 		}
 		return null;

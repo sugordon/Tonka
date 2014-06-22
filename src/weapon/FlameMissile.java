@@ -133,18 +133,18 @@ public class FlameMissile extends Projectile {
 	public double getVar(){
 		return this.center.getX();
 	}
-	public class ProxyFlame implements Drawable, Serializable {
-		private final Shape shape;
-		
-		public ProxyFlame(Shape s){
-			this.shape = s;
-		}
-		
-		@Override
-		public void draw(Graphics2D g2) {
-			g2.setColor(Color.red);
-			g2.fill(shape);
-		}
-		
+}
+class ProxyFlame implements Drawable, Serializable {
+	private final Shape shape;
+	
+	public ProxyFlame(Shape s){
+		this.shape = s;
 	}
+	
+	@Override
+	public void draw(Graphics2D g2) {
+		g2.setColor(Color.red);
+		g2.fill(shape);
+	}
+	
 }

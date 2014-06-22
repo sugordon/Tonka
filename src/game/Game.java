@@ -55,20 +55,20 @@ public class Game implements Drawable {
 		collisions = new CollisionMap();
 //		thHand = new ThreadHandler();
 		map = new Map(this);
-		map.destructiblepaintBall();
+		map.cubez();
 		for(Block b: map.showBlocks()){
 			addObject(b);
 		}
 		
 		for (int i = 0;i<playerNum;i++){
-			Tank t = new Tank(100,100 + 50*i, i + 1, this);
+			Tank t = new Tank(100,100 + 40*i, i + 1, this);
 			this.addRandomWeapons(t, frequency);
 //			t.takeDamage(-1000);
 //			t.addWeapon(new Flamethrower(t, 0, 0));
 			addObject(t);
-			for (int j = 0;j<6;j++){
-				Tank enemy = new Tank(900 + 100*i, 100*j + 100, 0, this);
-				enemy.setColor(new Color(200, 30, 30));
+			for (int j = 0;j<4;j++) {
+				Tank enemy = new Tank(1100 + 50*i, 100*j + 50, 0, this);
+				enemy.setColor(new Color(150 + (int)(Math.random()*80),  (int)(Math.random()*40),  (int)(Math.random()*40)));
 				this.addRandomWeapons(enemy, frequency);
 				enemy.addAI(new AI(enemy, this));
 				boolean colliding = false;
@@ -317,7 +317,7 @@ public class Game implements Drawable {
 			Object[] grenade = 		{WeaponList.GrenadeLauncher, .1};
 			Object[] shuriken =     {WeaponList.ShurikenLauncher, 0.1};
 			Object[] richard = 		{WeaponList.RichardWeapon, 0.01};
-			Object[] flamethrower = {WeaponList.Flamethrower, 0.0};
+			Object[] flamethrower = {WeaponList.Flamethrower, 0.1};
 			Object[] pulsar = 		{WeaponList.Pulsar, 0.1};
 			Object[] longbow = 		{WeaponList.Longbow, 0.1};
 			

@@ -33,7 +33,44 @@ public class Map {
 	public ArrayList<Block> showBlocks(){
 		return blocks;
 	}
-	
+	public void race() {
+		addBlock(new Block(new Rectangle(0,0,950,20), false, game));
+		addBlock(new Block(new Rectangle(1050,0,230,20), false, game));
+		addBlock(new Block(new Rectangle(0,700,1280,20), false, game));
+		addBlock(new Block(new Rectangle(0,0,20,720), false, game));
+		addBlock(new Block(new Rectangle(1260,0,20,720), false, game));
+		
+		
+		addBlock(new Block(new Rectangle(500,-250,10,200), true, game));
+		
+
+		//maze
+		addBlock(new Block(new Rectangle(0, 200, 300, 10), false, game));
+		addBlock(new Block(new Rectangle(340, 0, 10, 650), false, game));
+		addBlock(new Block(new Rectangle(70, 270, 280, 10), false, game));
+		addBlock(new Block(new Rectangle(0, 330, 300, 10), false, game));
+		addBlock(new Block(new Rectangle(70, 380, 280, 10), false, game));
+		addBlock(new Block(new Rectangle(0, 430, 300, 10), false, game));
+		//triangle
+		int[] trianglex = {350, 70, 70, 350};
+		int[] triangley = {470, 540, 560, 630};
+		addBlock(new Block(new Polygon(trianglex, triangley, 4), false, game));
+		//random
+		for(int a=0; a<100; a++) {
+			int x=350+(int)(Math.random()*700);
+			int y=(int)(Math.random()*700);
+			int w = 20+(int)(Math.random()*60);
+			int h = 20+(int)(Math.random()*60);
+			if(y+h>700) {
+				h = 700-y;
+			}
+			if(x+w>1260) {
+				w = 1260-x;
+			}
+			addBlock(new Block(new Rectangle(x, y, w, h), true, game));
+		}
+		addBlock(new Block(new Rectangle(1050, 0, 10, 700), false, game));
+	}
 	public void basicMap(){
 		addBlock(new Block(new Rectangle(0,0,1280,20), false, game));
 		addBlock(new Block(new Rectangle(0,700,1280,20), false, game));
@@ -42,6 +79,21 @@ public class Map {
 		addBlock(new Block(new Rectangle(300, 200, 75, 350), true, game));
 		addBlock(new Block(new Rectangle(800, 200, 75, 350), true, game));
 
+	}
+	public void cubez() {
+		addBlock(new Block(new Rectangle(0,0,1280,20), false, game));
+		addBlock(new Block(new Rectangle(0,700,1280,20), false, game));
+		addBlock(new Block(new Rectangle(0,0,20,720), false, game));
+		addBlock(new Block(new Rectangle(1260,0,20,720), false, game));
+		
+		addBlock(new Block(new Rectangle(300, 100, 300, 100), true, game));
+		addBlock(new Block(new Rectangle(300, 300, 200, 100), true, game));
+		addBlock(new Block(new Rectangle(300, 500, 300, 100), true, game));
+		addBlock(new Block(new Rectangle(700, 100, 300, 100), true, game));
+		addBlock(new Block(new Rectangle(800, 300, 200, 100), true, game));
+		addBlock(new Block(new Rectangle(700, 500, 300, 100), true, game));
+		addBlock(new Block(new Rectangle(647, 0, 6, 335), true, game));
+		addBlock(new Block(new Rectangle(647, 365, 6, 335), true, game));
 	}
 	public void paintBall() {
 		addBlock(new Block(new Rectangle(0,0,1280,20), false, game));

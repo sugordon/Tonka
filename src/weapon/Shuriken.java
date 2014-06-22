@@ -59,14 +59,14 @@ public class Shuriken extends Projectile{
 	
 	@Override
 	public Shape getDestroyed() {
-		int sides = 20;
-		int[] xarr = new int[sides];
-		int[] yarr = new int[sides];
-		for (int i = 0;i<sides;i++){
-			xarr[i] = (int)(((Math.random()*0)+4)*Math.cos(Math.toRadians(i*360/sides)) + this.center.getX() + deltax/20);
-			yarr[i] = (int)(((Math.random()*0)+4)*Math.sin(Math.toRadians(i*360/sides)) + this.center.getY() + deltay/20);
-		}
-		Polygon destroyed = new Polygon(xarr, yarr, sides);
+//		int sides = 20;
+//		int[] xarr = new int[sides];
+//		int[] yarr = new int[sides];
+//		for (int i = 0;i<sides;i++){
+//			xarr[i] = (int)(((Math.random()*0)+4)*Math.cos(Math.toRadians(i*360/sides)) + this.center.getX() + deltax/20);
+//			yarr[i] = (int)(((Math.random()*0)+4)*Math.sin(Math.toRadians(i*360/sides)) + this.center.getY() + deltay/20);
+//		}
+//		Polygon destroyed = new Polygon(xarr, yarr, sides);
 		return this.getShape();
 	}
 

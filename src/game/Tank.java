@@ -49,11 +49,11 @@ public class Tank implements Drawable, Collidable, Updatable, Sendable {
 		this.myWeapons = weapons;
 		this.maxHP = 100;
 		hp = maxHP;
-		this.speed = 3;
-		this.turnSpeed = 5;
+		this.speed = 2+(int)(Math.random()*2);
+		this.turnSpeed = 4+(int)(Math.random()*2);
 		setColor(Color.green);
 		int width = 15+(int)(Math.random()*10);
-		int height = 30+(int)(Math.random()*10);
+		int height = 25+(int)(Math.random()*15);
 		tankShape = new Rectangle((int)x-height/2, (int)y-width/2, height,width);
 		this.game = game;
 		this.tankShape = Transform.transform(getShape(), 0, 0, Math.toRadians(180), xcenter, ycenter);
@@ -114,10 +114,10 @@ public class Tank implements Drawable, Collidable, Updatable, Sendable {
 		setTheta(tgtTheta);
 		
 		//rotates weapons along with the tank//
-//		for(int a=0; a<this.getWeapons().size(); a++) {
-//			Weapon w = getWeapons().get(a);
-//			w.setAngle((int) (w.getAngle()+tgtTheta-originalTheta));
-//		}
+		for(int a=0; a<this.getWeapons().size(); a++) {
+			Weapon w = getWeapons().get(a);
+			w.setAngle((int) (w.getAngle()+tgtTheta-originalTheta));
+		}
 		
 		HashSet<Collidable> collisions = game.getCollisions(this);
 		boolean blocked = false;
@@ -134,10 +134,10 @@ public class Tank implements Drawable, Collidable, Updatable, Sendable {
 			setTheta(originalTheta);
 			
 			//unrotates weapons along with the tank//
-//			for(int a=0; a<this.getWeapons().size(); a++) {
-//				Weapon w = getWeapons().get(a);
-//				w.setAngle((int)(w.getAngle()-tgtTheta+originalTheta));
-//			}
+			for(int a=0; a<this.getWeapons().size(); a++) {
+				Weapon w = getWeapons().get(a);
+				w.setAngle((int)(w.getAngle()-tgtTheta+originalTheta));
+			}
 			
 		}
 		
