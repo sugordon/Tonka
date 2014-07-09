@@ -35,7 +35,7 @@ public class Map {
 	}
 	public void race() {
 		addBlock(new Block(new Rectangle(0,0,950,20), false, game));
-		addBlock(new Block(new Rectangle(1050,0,230,20), false, game));
+		addBlock(new Block(new Rectangle(1050,0,230,20), true, game));
 		addBlock(new Block(new Rectangle(0,700,1280,20), false, game));
 		addBlock(new Block(new Rectangle(0,0,20,720), false, game));
 		addBlock(new Block(new Rectangle(1260,0,20,720), false, game));
@@ -54,7 +54,7 @@ public class Map {
 		//triangle
 		int[] trianglex = {350, 70, 70, 350};
 		int[] triangley = {470, 540, 560, 630};
-		addBlock(new Block(new Polygon(trianglex, triangley, 4), false, game));
+		addBlock(new Block(new Polygon(trianglex, triangley, 4), true, game));
 		//random
 		for(int a=0; a<100; a++) {
 			int x=350+(int)(Math.random()*700);
@@ -64,10 +64,13 @@ public class Map {
 			if(y+h>700) {
 				h = 700-y;
 			}
-			if(x+w>1260) {
-				w = 1260-x;
+			if(x+w>1050) {
+				w = 1050-x;
 			}
-			addBlock(new Block(new Rectangle(x, y, w, h), true, game));
+			boolean asdf = true;
+			if(a%7==0)
+				asdf = false;
+			addBlock(new Block(new Rectangle(x, y, w, h), asdf, game));
 		}
 		addBlock(new Block(new Rectangle(1050, 0, 10, 700), false, game));
 	}

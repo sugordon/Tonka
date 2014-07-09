@@ -79,8 +79,8 @@ public class FlameMissile extends Projectile {
 		int[] xarr = new int[sides];
 		int[] yarr = new int[sides];
 		for (int i = 0;i<sides;i++){
-			xarr[i] = (int)(((Math.random()*2)+1)*Math.cos(Math.toRadians(i*360/sides)) + this.center.getX() + deltax/20);
-			yarr[i] = (int)(((Math.random()*2)+1)*Math.sin(Math.toRadians(i*360/sides)) + this.center.getY() + deltay/20);
+			xarr[i] = (int)(((Math.random()*2)+2)*Math.cos(Math.toRadians(i*360/sides)) + this.center.getX() + deltax/20);
+			yarr[i] = (int)(((Math.random()*2)+2)*Math.sin(Math.toRadians(i*360/sides)) + this.center.getY() + deltay/20);
 		}
 		Polygon destroyed = new Polygon(xarr, yarr, sides);
 		return destroyed;

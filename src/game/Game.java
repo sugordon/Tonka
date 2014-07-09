@@ -61,7 +61,7 @@ public class Game implements Drawable {
 		}
 		
 		for (int i = 0;i<playerNum;i++){
-			Tank t = new Tank(100,100 + 40*i, i + 1, this);
+			Tank t = new Tank(100,100 + 40*i, 1, this);
 			this.addRandomWeapons(t, frequency);
 //			t.takeDamage(-1000);
 //			t.addWeapon(new Flamethrower(t, 0, 0));
